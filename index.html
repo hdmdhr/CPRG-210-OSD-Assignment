@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Travel Experts</title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+  <header>
+    <div class="logo-line">
+      <img src="img/logo.png" alt="Logo" class="logo">
+      <h1>Welcome to Travel Experts</h1>
+    </div>
+    <div class="gallery">
+      <div class="picture-box">
+        <img src="img/Australia.jpg" alt="Australia Landscape">
+        <p class="caption">Australia Landscape</p>
+      </div>
+      <div class="picture-box">
+        <img src="img/Norway.jpg" alt="Norway Landscape">
+        <p class="caption">Norway Forest</p>
+      </div>
+      <div class="picture-box">
+        <p class="caption">Canadian Mountains</p>
+        <img src="img/Canada.jpg" alt="Canada Landscape">
+      </div>
+    </div>
+  </header>
+
+  <nav class="nav-bar">
+    <div class="nav-tab">
+      <a href="contact.html" target="_blank" id="contact"><img src="img/contacts.png" alt="Contact Us"> <label for="contact">Contact Us</label>
+      </a>
+    </div>
+    <div class="nav-tab">
+      <a href="register.html" target="_blank" id="register"><img src="img/register.png" alt="Register Now"> <label for="register">Register</label>
+      </a>
+    </div>
+    <div class="nav-tab"><a href=""><img src="img/avatar.gif" alt="fun"><label for="">Fun</label></a></div>
+    <div class="nav-tab"><a href=""><img src="img/chillies.png" alt="chilli"><label for="">Spicy!</label></a></div>
+    <div class="nav-tab"><a href=""><img src="img/computer.png" alt="computer"><label for="">Technician</label></a></div>
+  </nav>
+
+  <aside class="side-bar">
+    <ul>
+      <li><a href="#">Contact Us</a></li>
+      <li><a href="#">Register Now</a></li>
+      <li><a href="#">See Gallery</a></li>
+      <li><a href="#">Our Facebook</a></li>
+      <li><a href="#">Our Twitter</a></li>
+    </ul>
+  </aside>
+
+  <main>
+    <article>
+      <form action="bouncer.php">
+        <div>
+          <label for="name">Name</label>
+          <input type="text" name="user_name" id="name" required>
+        </div>
+        <div>
+          Gender
+          <input type="radio" name="gender" id="">Male
+          <input type="radio" name="gender" id="">Female
+        </div>
+        <div>
+          <label for="phone">Phone</label>
+          <input type="text" id="phone" name="user_phone">
+        </div>
+        <div>
+          <label for="address">Address</label>
+          <input type="text" id="address" name="user_address">
+        </div>
+        <div>
+          Prefered Spot
+          <input type="checkbox" name="canada" value="canada" id="">Canada
+          <input type="checkbox" name="the US" value="the US" id="">The US
+          <input type="checkbox" name="japan" value="japan" id="">Japan
+          <input type="checkbox" name="china" value="china" id="">China
+          <input type="checkbox" name="europe" value="europe" id="">Europe
+        </div>
+        <div>
+          Your Country:
+          <select name="user_country" id="">
+            <option value="">--Please choose an option--</option>
+            <option value="canada">Canada</option>
+            <option value="china">China</option>
+            <option value="us">The US</option>
+          </select>
+        </div>
+        <div>
+          <label for="comment">Your Comment</label>
+          <textarea name="" id="comment" cols="50" rows="10"></textarea>
+        </div>
+        <div>
+          <input type="submit" value="Submit">
+          <input type="reset" value="Reset!">
+        </div>
+      </form>
+    </article>
+  </main>
+  <hr>
+  <footer>
+    <p class="highlight">&copy; DongMing 2019</p>
+    <p id="company">&reg; Little Bit Everything 2018-2019</p>
+  </footer>
+</body>
+
+</html>
