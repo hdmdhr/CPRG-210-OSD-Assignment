@@ -1,51 +1,47 @@
+body {
+  text-align: center;
+  background-image: url("../img/city-bg.jpg");
+  background-size: cover;
+  background-position: center;
+}
 
-aside{
+/* --- Side Bar Navigation --- */
+aside {
   /* position: fixed; */
-  left: 1rem;
-  bottom: 10rem;
+  /* left: 1rem;
+  bottom: 10rem; */
   float: left;
   background-color: orange;
   font: 1.5rem sans-serif;
   text-align: left;
 }
 
-ul{
+ul {
   list-style: none;
 }
 
-body {
-  text-align: center;
-}
-
-form {
-  position: relative;
-  background-color: aquamarine;
-  width: 740px;
-  height: 498px;
-  margin: 0 auto;
-}
-
-header{
-  background-color: grey;
-  color: white;
+/* --- Header Section --- */
+header {
+  /* background-color: grey; */
+  /* color: white; */
   padding: 10px;
 }
 
-h1{
+h1 {
   font-size: 2rem;
   margin: 1rem;
 }
 
-nav{
+nav {
   margin: 1rem;
 }
 
-nav .nav-tab{
+nav .nav-tab {
   display: inline-block;
   margin: 2rem;
 }
 
-nav a img{
+nav a img {
   position: relative;
   height: 3rem;
 }
@@ -60,30 +56,56 @@ th, td {
   margin: auto 10px;
 }
 
-.logo{
+.logo {
   height: 4rem;
   position: relative;
   top: 1rem;
 }
 
-.logo-line{
+.logo-line {
   margin-bottom: 20px;
 }
 
-.logo-line *{
+.logo-line * {
   display: inline;
 }
 
-.picture-box{
+.picture-box {
   display: inline-block;
   position: relative;
 }
 
-.caption{
+.caption {
   position: absolute;
   bottom: 1rem;
   left: 1rem;
-  background-color: rgba(128, 128, 128,.6);
-  padding-right:0.8rem;
+  background-color: rgba(128, 128, 128, .6);
+  padding-right: 0.8rem;
   margin: 0;
+}
+
+/* --- Form Section --- */
+form {
+  text-align: left;
+  background-color: rgba(47, 79, 79, 0.5);
+  width: 50%;
+  margin: 2% auto;
+  padding: 3%;
+}
+
+form label {
+  margin-right: 10px;
+}
+
+.form-check {
+  display: inline;
+  margin-right: 15px;
+}
+
+.form-btn {
+  margin-right: 15px;
+}
+
+input, textarea {
+  /* background-color: #E6E6FA; */
 }
