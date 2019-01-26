@@ -1,25 +1,92 @@
-// --- Home & Register Page ---
-//   Confirm to sumbit & reset
+// --- Forms on Home & Register Pages ---
 
-if ($('title')[0].text === 'Travel Experts' | 'Register') {
+if (document.querySelector('title').text === 'Travel Experts' || 'Register') {
 
   var form = document.registerForm;
   console.log(form);
 
-  form.addEventListener('submit', function(event) {
-    event.preventDefault();
+  //   Feature 1: Ask user to confirm after click sumbit & reset
+
+  form.submitBtn.addEventListener('click', function(event) {
+    // event.preventDefault();
     if (confirm('Ready to submit?')) {
-      form.submit();
+      if (validateForm(event)){
+        console.log('Submit the form.');
+        // form.submit();
+      }
     }
   });
 
-  form.addEventListener('reset', function(event) {
+  form.resetBtn.addEventListener('click', function(event) {
     if (confirm('This will reset all your infomation.')) {
       form.reset();
       event.preventDefault();
       form.name.focus();
     }
   });
+
+  // Feature 2: Focus & blur to show & hide description text
+
+  var allDescriptions = document.querySelectorAll('.input-hint-hidden');
+
+  for (i = 0; i < allDescriptions.length; i++) {
+
+    var description = allDescriptions[i];
+
+    // check if the previous element is text field, if yes, add focus & blur event listener to it
+
+    if (description.previousElementSibling.tagName === 'INPUT' || 'TEXTAREA') {
+
+      var input = description.previousElementSibling;
+
+      input.addEventListener('focus', function(event) {
+        this.nextElementSibling.className = "input-hint-show";
+      });
+
+      input.addEventListener('blur', function(event) {
+        this.nextElementSibling.className = 'input-hint-hidden';
+      });
+
+    }
+
+  }
+
+  // Feature 3: Validate the form before submit
+
+  form.addEventListener('submit', validateForm);
+
+  function validateForm(event) {
+    // event.preventDefault();
+    var isValidated = true;
+
+    var nameValue = form.name.value;
+    var emailAddress = form.email.value;
+    var age = form.age.value;
+
+    if (age < 18) {
+      form.age.focus();
+      $('#errorAge').css('display', 'block');
+      $('#errorAge').css('color', 'red');
+      isValidated = false;
+    }
+
+    if (!emailAddress) {
+      form.email.focus();
+      $('#errorEmail').css('display', 'block');
+      $('#errorEmail').css('color', 'red');
+      isValidated = false;
+    }
+
+    if (!nameValue) {
+      form.name.focus();
+      $('#errorName').css('display', 'block');
+      $('#errorName').css('color', 'red');
+      isValidated = false;
+    }
+
+    return isValidated;
+  }
+
 
 }
 

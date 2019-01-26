@@ -14,8 +14,6 @@ console.log($('#errorName'));
 console.log($('#errorEmail'));
 
 
-// submitBtn.addEventListener("click",
-
 $("form").submit(function(event) {
   event.preventDefault();
 
@@ -43,8 +41,6 @@ $("form").submit(function(event) {
     $('#errorName').css('display', 'block');
     $('#errorName').css('color', 'red');
   }
-
-
 
 });
 

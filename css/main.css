@@ -105,13 +105,33 @@ form label {
   margin-right: 15px;
 }
 
-.form-btn {
-  margin-right: 15px;
+.form-btns{
+  text-align: center;
 }
 
-input, textarea {
-  /* background-color: #E6E6FA; */
+.form-btn {
+  margin: 15px;
 }
+
+
+.form-group {
+  position: relative;
+}
+
+.input-hint-hidden {
+  display: none;
+}
+
+.input-hint-show {
+  display: inline;
+  position: absolute;
+  top: 0.3em;
+  right: 0.3em;
+  margin: 0 15px;
+  color: grey;
+}
+
+input:focus::-webkit-input-placeholder { color:transparent; }
 
 
 /* --- Tables --- */
