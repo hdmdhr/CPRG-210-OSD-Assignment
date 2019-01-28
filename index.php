@@ -23,19 +23,19 @@
 
     <nav class="nav-bar">
       <div class="nav-tab">
-        <a href="contact.html" target="_blank"><img src="img/contacts.png" alt="Contact Us">Contact Us</a>
+        <a href="contact.php" target="_blank"><img src="img/contacts.png" alt="Contact Us">Contact Us</a>
       </div>
       <div class="nav-tab">
-        <a href="register.html" target="_blank"><img src="img/register.png" alt="Register Now">Register</a>
+        <a href="register.php" target="_blank"><img src="img/register.png" alt="Register Now">Register</a>
       </div>
       <div class="nav-tab">
-        <a href="spots.html" target="_blank"><img src="img/chillies.png" alt="hot spots">Famous Spots</a>
+        <a href="spots.php" target="_blank"><img src="img/chillies.png" alt="hot spots">Famous Spots</a>
       </div>
       <div class="nav-tab">
         <a href="https://tenor.com/search/cute-kitten-gifs" target="_blank"><img src="img/avatar.gif" alt="fun">Fun</a>
       </div>
       <div class="nav-tab">
-        <a href="https://stackoverflow.com" target="_blank"><img src="img/computer.png" alt="tech">Tech Support</a>
+        <a href="links.php" target="_blank"><img src="img/computer.png" alt="tech">Links Page</a>
       </div>
     </nav>
 
