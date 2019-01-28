@@ -1,47 +1,50 @@
 body {
+  font: 1rem 'Raleway', sans-serif;
   text-align: center;
+  color: #373640;
   background-image: url("../img/city-bg.jpg");
   background-size: cover;
   background-position: center;
 }
 
-/* --- Side Bar Navigation --- */
-aside {
-  /* position: fixed; */
-  /* left: 1rem;
-  bottom: 10rem; */
-  float: left;
-  background-color: orange;
-  font: 1.5rem sans-serif;
-  text-align: left;
-}
-
-ul {
-  list-style: none;
+h2 {
+  margin: 1.5rem 0;
 }
 
 /* --- Header Section --- */
 header {
-  /* background-color: grey; */
-  /* color: white; */
   padding: 10px;
+  background-color: RGBA(189, 183, 107, 0.25);
 }
 
 h1 {
-  font-size: 2rem;
-  margin: 1rem;
+  display: inline;
+  font: 900 3rem 'Lato', sans-serif;
+  margin: 2rem;
+  vertical-align: middle;
 }
 
+.logo-line {
+  margin: 2rem;
+}
+
+.logo {
+  height: 4rem;
+}
 
 /* --- Navigation Bar --- */
-
 nav {
-  margin: 0 1rem;
+  margin: 1rem 1rem 0rem;
 }
 
-nav .nav-tab {
+.nav-tab {
   display: inline-block;
-  margin: 0.5rem 1rem;
+  padding: 0.5rem;
+  margin: 0.5rem 2rem;
+}
+
+.nav-tab:hover {
+  background-color: RGBA(189, 183, 107, 0.75);
 }
 
 nav a img {
@@ -49,45 +52,67 @@ nav a img {
   margin: auto 0.5rem;
 }
 
-th, td {
-  border: 1px solid;
+nav a {
+  color: #373640;
+  font-size: 1.4em;
+  font-weight: 700;
+}
+
+/* --- Side Bar --- */
+aside {
+  position: fixed;
+  left: 1rem;
+  float: left;
+  background-color: RGBA(189, 183, 107, 0.25);
+  text-align: left;
+  z-index: 2;
+}
+
+aside ul {
+  padding: 0 0.5rem 0 1rem;
+  list-style: none;
+}
+
+aside li {
+  font-size: 1.5em;
+  font-weight: 700;
+  padding: 0.4rem 0;
+  color: #373640;
+}
+
+
+/* --- Gallery --- */
+
+.gallery {
+  padding: 2rem 0;
+  background-color: rgba(116, 180, 155, 0.4);
 }
 
 .gallery img {
-  /* width: 20%; */
-  height: 10em;
-  margin: auto 10px;
-}
-
-.logo {
-  height: 4rem;
-  position: relative;
-  top: 1rem;
-}
-
-.logo-line {
-  margin-bottom: 20px;
-}
-
-.logo-line * {
-  display: inline;
+  height: 12em;
+  border-radius: 5%;
+  border: 0.5px solid white;
 }
 
 .picture-box {
   display: inline-block;
   position: relative;
+  padding: 10px;
 }
 
 .caption {
   position: absolute;
+  font-size: 1.2em;
   bottom: 1rem;
   left: 1rem;
+  color: white;
   background-color: rgba(128, 128, 128, .6);
-  padding-right: 0.8rem;
+  padding: 0 0.5rem;
   margin: 0;
 }
 
 /* --- Form Section --- */
+
 form {
   text-align: left;
   background-color: rgba(47, 79, 79, 0.1);
@@ -105,7 +130,7 @@ form label {
   margin-right: 15px;
 }
 
-.form-btns{
+.form-btns {
   text-align: center;
 }
 
@@ -113,9 +138,12 @@ form label {
   margin: 15px;
 }
 
-
 .form-group {
   position: relative;
+}
+
+.invalid-input {
+  border: 2px solid red;
 }
 
 .input-hint-hidden {
@@ -131,16 +159,57 @@ form label {
   color: grey;
 }
 
-input:focus::-webkit-input-placeholder { color:transparent; }
-
-
-/* --- Tables --- */
-.table {
-    width: 50%;
-    margin: 1rem auto;
+input:focus::-webkit-input-placeholder,textarea:focus::-webkit-input-placeholder{
+  color: transparent;
 }
 
-td img{
+/* --- Carousel --- */
+
+#carousel {
+  padding: 0rem;
+  background-color: rgba(47, 79, 79, 0.2);
+}
+
+.carousel-item {
+  padding: 3% 15%;
+}
+
+.carousel-item img {
+  margin: auto;
+  border-radius: 5%;
+}
+
+
+/* --- Table, List --- */
+.table {
+  width: 40%;
+  margin: 1rem auto;
+  background-color: rgba(47, 79, 79, 0.1);
+}
+
+.table thead th {
+  border: 2px solid rgba(47, 79, 79, 0.7);
+}
+
+th, td {
+  border: 1px solid rgba(47, 79, 79, 0.7);
+}
+
+td img {
   width: 100%;
   border: 2px solid white;
+  border-radius: 5%;
+}
+
+.list-group {
+  text-align: left;
+  width: fit-content;
+  margin: auto;
+}
+
+/* ---Footer Section --- */
+
+.copyright, .company {
+  font: italic 700 1.2em 'Raleway', sans-serif;
+  color: rgba(0, 0, 0, 0.65);
 }

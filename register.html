@@ -6,50 +6,58 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Register</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900|Raleway:400,700,700i,900" rel="stylesheet">
   <link rel="stylesheet" href="css/bootstrap.css">
   <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body>
   <header>
-    <h1>Register Now</h1>
-  </header>
 
-  <nav class="nav-bar">
-    <div class="nav-tab">
-      <a href="contact.html"><img src="img/contacts.png" alt="Contact Us">Contact Us</a>
+    <div class="logo-line">
+      <a href="index.html">
+        <img src="img/balloon.png" alt="Logo" class="logo">
+      </a>
+      <h1 class="big-title">REGISTER NOW</h1>
     </div>
-    <div class="nav-tab">
-      <a href="register.html"><img src="img/register.png" alt="Register Now">Register</a>
-    </div>
-    <div class="nav-tab">
-      <a href="spots.html"><img src="img/chillies.png" alt="chilli">Famous Spots</a>
-    </div>
-    <div class="nav-tab">
-      <a href=""><img src="img/avatar.gif" alt="fun">Fun</a>
-    </div>
-    <div class="nav-tab">
-      <a href=""><img src="img/computer.png" alt="computer">Tech Supportgroup></a>
-    </div>
-  </nav>
+
+    <nav class="nav-bar">
+      <div class="nav-tab">
+        <a href="contact.html" target="_blank"><img src="img/contacts.png" alt="Contact Us">Contact Us</a>
+      </div>
+      <div class="nav-tab">
+        <a href="register.html" target="_blank"><img src="img/register.png" alt="Register Now">Register</a>
+      </div>
+      <div class="nav-tab">
+        <a href="spots.html" target="_blank"><img src="img/chillies.png" alt="hot spots">Famous Spots</a>
+      </div>
+      <div class="nav-tab">
+        <a href="https://tenor.com/search/cute-kitten-gifs" target="_blank"><img src="img/avatar.gif" alt="fun">Fun</a>
+      </div>
+      <div class="nav-tab">
+        <a href="https://stackoverflow.com" target="_blank"><img src="img/computer.png" alt="tech">Tech Support</a>
+      </div>
+    </nav>
+
+  </header>
 
 
 
 
   <article>
-    <form action="" name="registerForm">
+    <form action="bouncer.php" name="registerForm">
       <div class="form-row">
         <div class="form-group col-md-6">
           <label for="name">Name</label>
           <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
           <p class="input-hint-hidden">Your first name and last name.</p>
-          <p id="errorName" style="display:none;">Please enter your full name.</p>
+          <p id="errorName" style="display:none; color:red;">Please enter your full name.</p>
         </div>
         <div class="form-group col-md-6">
           <label for="email">Email</label>
-          <input type="email" class="form-control" id="email" name="email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+          <input type="email" class="form-control" id="email" name="email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}">
           <p class="input-hint-hidden">Email format: john@example.com</p>
-          <p id="errorEmail" style="display:none;">Please enter your email address.</p>
+          <p id="errorEmail" style="display:none; color:red;">Please enter your email address.</p>
         </div>
       </div>
       <div class="form-row">
@@ -64,7 +72,7 @@
           <label for="age">Age</label>
           <input type="number" name="age" id="age" class="form-control" placeholder="Your Age" required>
           <p class="input-hint-hidden">You need to be over 18 to have our services.</p>
-          <p id="errorAge" style="display:none;">You have to be above 18 to have our services.</p>
+          <p id="errorAge" style="display:none; color:red;">You have to be above 18 to have our services.</p>
         </div>
       </div>
       <div class="form-group">
@@ -89,9 +97,9 @@
         </div>
         <div class="form-group col-md-4">
           <label for="zip">Zip</label>
-          <input type="text" class="form-control" id="zip" placeholder="T3T1O1" pattern="/^[A-Z]\d[A-Z] ?\d[A-Z]\d$/">
+          <input type="text" class="form-control" name="zip" id="zip" placeholder="T3T1O1" pattern="[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d">
           <p class="input-hint-hidden">6 digits zip code without space.</p>
-          <p id="errorZip" style="display:none;">Zip doesn't match the format. eg. T6J0C8.</p>
+          <p id="errorZip" style="display:none; color:red;">Zip doesn't match the format. eg. T6J0C8.</p>
         </div>
       </div>
       <div class="form-group row">
@@ -142,6 +150,12 @@
 
 
   <hr>
+
+  <footer>
+    <p class="copyright">&copy; DongMing Hu 2019</p>
+    <p class="company">&reg; Little Bit Everything 2018-2019</p>
+  </footer>
+
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="script.js" charset="utf-8"></script>

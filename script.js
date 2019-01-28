@@ -1,18 +1,56 @@
 // --- Forms on Home & Register Pages ---
 
-if (document.querySelector('title').text === 'Travel Experts' || 'Register') {
+var title = document.querySelector('title').text;
 
+if (title === 'Travel Experts' || title === 'Register') {
+  console.log('this is home page or register page.');
   var form = document.registerForm;
   console.log(form);
 
-  //   Feature 1: Ask user to confirm after click sumbit & reset
+  // Feature 1: Ask user to confirm after click sumbit & reset
+  // Feature 2: Validate the form before submit
 
-  form.submitBtn.addEventListener('click', function(event) {
-    // event.preventDefault();
+  form.addEventListener('submit', function(event) {
     if (confirm('Ready to submit?')) {
-      if (validateForm(event)){
-        console.log('Submit the form.');
-        // form.submit();
+      event.preventDefault();
+
+      // reset error messages to hidden
+      document.getElementById('errorName').style.display = 'none';
+      document.getElementById('errorEmail').style.display = 'none';
+      document.getElementById('errorAge').style.display = 'none';
+      document.getElementById('errorZip').style.display = 'none';
+      $('input').removeClass('invalid-input');
+
+      // check if user filled zip, age, email, name info, if not, show error message
+
+      var isValidated = true;
+
+      if (!form.zip.value) {
+        form.zip.focus();
+        $('#errorZip').css('display', 'block');
+        $('#zip').addClass('invalid-input');
+        isValidated = false;
+      }
+      if (age.value < 18) {
+        form.age.focus();
+        $('#errorAge').css('display', 'block');
+        $('#age').addClass('invalid-input');
+        isValidated = false;
+      }
+      if (!form.email.value) {
+        form.email.focus();
+        $('#errorEmail').css('display', 'block');
+        $('#email').addClass('invalid-input');
+        isValidated = false;
+      }
+      if (!form.name.value) {
+        form.name.focus();
+        $('#errorName').css('display', 'block');
+        $('#name').addClass('invalid-input');
+        isValidated = false;
+      }
+      if (isValidated) {
+        form.submit();
       }
     }
   });
@@ -25,7 +63,7 @@ if (document.querySelector('title').text === 'Travel Experts' || 'Register') {
     }
   });
 
-  // Feature 2: Focus & blur to show & hide description text
+  // Feature 3: Focus & blur on text field to show & hide description text
 
   var allDescriptions = document.querySelectorAll('.input-hint-hidden');
 
@@ -48,51 +86,34 @@ if (document.querySelector('title').text === 'Travel Experts' || 'Register') {
       });
 
     }
-
   }
 
-  // Feature 3: Validate the form before submit
+  // Feature 4(extra): mouseover side bar to show corresponding content
 
-  form.addEventListener('submit', validateForm);
-
-  function validateForm(event) {
-    // event.preventDefault();
-    var isValidated = true;
-
-    var nameValue = form.name.value;
-    var emailAddress = form.email.value;
-    var age = form.age.value;
-
-    if (age < 18) {
-      form.age.focus();
-      $('#errorAge').css('display', 'block');
-      $('#errorAge').css('color', 'red');
-      isValidated = false;
+  $('aside ul li').mouseover(function(event) {
+    $('aside ul li').css('background-color','RGBA(189, 183, 107, 0.25)');
+    this.style.backgroundColor = 'RGBA(189, 183, 107, 0.75)';
+    switch (this.textContent) {
+      case 'See Gallery':
+        $('.hide').css('display','none');
+        $('#carousel').css('display','block');
+        break;
+      case 'Register Now':
+      $('.hide').css('display','none');
+      $('#form').css('display','block');
+        break;
+      case 'Contact Us':
+      $('.hide').css('display','none');
+      $('#table').css('display','table');
+        break;
     }
-
-    if (!emailAddress) {
-      form.email.focus();
-      $('#errorEmail').css('display', 'block');
-      $('#errorEmail').css('color', 'red');
-      isValidated = false;
-    }
-
-    if (!nameValue) {
-      form.name.focus();
-      $('#errorName').css('display', 'block');
-      $('#errorName').css('color', 'red');
-      isValidated = false;
-    }
-
-    return isValidated;
-  }
-
+  });
 
 }
 
-// --- Famous Spots Page ---
-//    Insert Image Table
-if ($('title')[0].text === 'Famous Spots') {
+// --- Image Table on Famous Spots Page ---
+
+if (title === 'Famous Spots') {
 
   console.log('This is Famous Spots page.');
 
@@ -110,27 +131,44 @@ if ($('title')[0].text === 'Famous Spots') {
       'Landscape of ZhangJiaJie in China.',
       'Japanese temple surronded by maples.',
       'Beautiful sunset in the US.'
+    ],
+    url: [
+      'https://www.skydive.com.au/',
+      'http://banffandbeyond.com/',
+      'https://www.chinahighlights.com/zhangjiajie/',
+      'https://www.japan-guide.com/',
+      'https://www.visittheusa.ca/'
     ]
   };
 
   $('.spots-table').append('<table class="table"><thead><tr><th colspan="2">Hot Spots Photos</th></tr></thead></table>');
 
-  var table = $('.table')[0];
+  var table = document.querySelector('.table');
 
   for (i = 0; i < spotsTable.image.length; i++) {
-    // append tr to table, append 2 td to tr
+    // append image & description to td, add click event listener to image
     var img = document.createElement('img');
     img.src = spotsTable.image[i];
+    img.href = spotsTable.url[i];
+    img.addEventListener('click', function(event) {
+      var newWindow = window.open(this.href);
+      setTimeout(() => {
+        newWindow.close();
+      }, 2500);
+    });
     var td1 = document.createElement('td');
     td1.appendChild(img);
     var td2 = document.createElement('td');
     td2.innerHTML = `<p>${spotsTable.description[i]}</p>`;
+
+    // append td to tr
     var tr = document.createElement('tr');
     tr.appendChild(td1);
     tr.appendChild(td2);
     tr.firstChild.style.width = '50%';
-    tr.firstChild.nextSibling.style.width = '50%';
+    tr.lastChild.style.width = '50%';
 
+    // append tr to table
     table.appendChild(tr);
   }
 
