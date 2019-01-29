@@ -12,34 +12,9 @@
 </head>
 
 <body>
-  <header>
-
-    <div class="logo-line">
-      <a href="index.html">
-        <img src="img/balloon.png" alt="Logo" class="logo">
-      </a>
-      <h1 class="big-title">WELCOME TO TRAVEL EXPERTS</h1>
-    </div>
-
-    <nav class="nav-bar">
-      <div class="nav-tab">
-        <a href="contact.php" target="_blank"><img src="img/contacts.png" alt="Contact Us">Contact Us</a>
-      </div>
-      <div class="nav-tab">
-        <a href="register.php" target="_blank"><img src="img/register.png" alt="Register Now">Register</a>
-      </div>
-      <div class="nav-tab">
-        <a href="spots.php" target="_blank"><img src="img/chillies.png" alt="hot spots">Famous Spots</a>
-      </div>
-      <div class="nav-tab">
-        <a href="https://tenor.com/search/cute-kitten-gifs" target="_blank"><img src="img/avatar.gif" alt="fun">Fun</a>
-      </div>
-      <div class="nav-tab">
-        <a href="links.php" target="_blank"><img src="img/computer.png" alt="tech">Links Page</a>
-      </div>
-    </nav>
-
-  </header>
+  <?php
+    require_once('php/header.php')
+   ?>
 
   <div class="gallery">
     <div class="picture-box">
@@ -279,19 +254,11 @@
     </tr>
   </table>
 
+<?php
+  require_once('php/footer.php');
+ ?>
 
 
-  <hr>
-  <footer>
-    <p class="copyright">&copy; DongMing Hu 2019</p>
-    <p class="company">&reg; Little Bit Everything 2018-2019</p>
-  </footer>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-
-
-  <script src="script.js" charset="utf-8"></script>
 </body>
 
 </html>

@@ -12,36 +12,10 @@
 </head>
 
 <body>
-  <header>
 
-    <div class="logo-line">
-      <a href="index.html">
-        <img src="img/balloon.png" alt="Logo" class="logo">
-      </a>
-      <h1 class="big-title">REGISTER NOW</h1>
-    </div>
-
-    <nav class="nav-bar">
-      <div class="nav-tab">
-        <a href="contact.html" target="_blank"><img src="img/contacts.png" alt="Contact Us">Contact Us</a>
-      </div>
-      <div class="nav-tab">
-        <a href="index.php" target="_blank"><img src="img/home.png" alt="Register Now">Home</a>
-      </div>
-      <div class="nav-tab">
-        <a href="spots.php" target="_blank"><img src="img/chillies.png" alt="hot spots">Famous Spots</a>
-      </div>
-      <div class="nav-tab">
-        <a href="https://tenor.com/search/cute-kitten-gifs" target="_blank"><img src="img/avatar.gif" alt="fun">Fun</a>
-      </div>
-      <div class="nav-tab">
-        <a href="https://stackoverflow.com" target="_blank"><img src="img/computer.png" alt="tech">Tech Support</a>
-      </div>
-    </nav>
-
-  </header>
-
-
+  <?php
+    require_once('php/header.php');
+   ?>
 
 
   <article>

@@ -32,6 +32,13 @@ h1 {
   height: 4rem;
 }
 
+/* --- Welcome Banner --- */
+
+.welcome-banner img{
+  height: 2.5rem;
+  display: inline;
+}
+
 /* --- Navigation Bar --- */
 nav {
   margin: 1rem 1rem 0rem;
