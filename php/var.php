@@ -8,4 +8,14 @@ $var = array(
   'https://www.visittheusa.ca/'=> "Visit USA"
 );
 
+$agents = array(
+  'AgtFirstName' => 'DongMing',
+  'AgtLastName' => 'Hu',
+  'AgtBusPhone' => '(780)616-7477',
+  'AgtEmail' => 'hdmdhr@gmail.com',
+  'AgtPosition' => 'Junior Agent',
+  // 'AgencyId' => 2
+);
+
+
  ?>

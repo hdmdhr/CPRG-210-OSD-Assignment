@@ -2,6 +2,26 @@
 
 var title = document.querySelector('title').text;
 
+switch (title) {
+  case 'Travel Experts':
+    $('.nav-tab')[0].classList.add('nav-tab-current');
+    break;
+  case 'Contact Us':
+    $('.nav-tab')[1].classList.add('nav-tab-current');
+    break;
+  case 'Register':
+    $('.nav-tab')[2].classList.add('nav-tab-current');
+    break;
+  case 'Famous Spots':
+    $('.nav-tab')[3].classList.add('nav-tab-current');
+    break;
+  case 'Links':
+    $('.nav-tab')[5].classList.add('nav-tab-current');
+    break;
+  default:
+    break;
+}
+
 if (title === 'Travel Experts' || title === 'Register') {
   console.log('this is home page or register page.');
   var form = document.registerForm;
@@ -91,20 +111,20 @@ if (title === 'Travel Experts' || title === 'Register') {
   // Feature 4(extra): mouseover side bar to show corresponding content
 
   $('aside ul li').mouseover(function(event) {
-    $('aside ul li').css('background-color','RGBA(189, 183, 107, 0.25)');
+    $('aside ul li').css('background-color', 'RGBA(189, 183, 107, 0.25)');
     this.style.backgroundColor = 'RGBA(189, 183, 107, 0.75)';
     switch (this.textContent) {
       case 'See Gallery':
-        $('.hide').css('display','none');
-        $('#carousel').css('display','block');
+        $('.hide').css('display', 'none');
+        $('#carousel').css('display', 'block');
         break;
       case 'Register Now':
-      $('.hide').css('display','none');
-      $('#form').css('display','block');
+        $('.hide').css('display', 'none');
+        $('#form').css('display', 'block');
         break;
       case 'Contact Us':
-      $('.hide').css('display','none');
-      $('#table').css('display','table');
+        $('.hide').css('display', 'none');
+        $('#table').css('display', 'table');
         break;
     }
   });

@@ -1,7 +1,7 @@
 <header>
 
   <div class="logo-line">
-    <a href="index.html">
+    <a href="index.php" target="_blank">
       <img src="img/balloon.png" alt="Logo" class="logo">
     </a>
     <h1 class="big-title">WELCOME TO TRAVEL EXPERTS</h1>

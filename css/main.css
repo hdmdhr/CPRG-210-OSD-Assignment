@@ -54,6 +54,12 @@ nav {
   background-color: RGBA(189, 183, 107, 0.75);
 }
 
+.nav-tab-current {
+  padding: 1rem 3rem;
+  background-color: RGBA(189, 183, 107, 0.75);
+  border-radius: 40%;
+}
+
 nav a img {
   height: 2rem;
   margin: auto 0.5rem;
@@ -191,7 +197,8 @@ input:focus::-webkit-input-placeholder,textarea:focus::-webkit-input-placeholder
 .table {
   width: 40%;
   margin: 1rem auto;
-  background-color: rgba(47, 79, 79, 0.1);
+  /* background-color: rgba(47, 79, 79, 0.1); */
+  background-color: white;
 }
 
 .table thead th {
