@@ -26,23 +26,23 @@
   </div>
 
   <nav class="nav-bar">
-        <div class="nav-tab">
+        <div class="nav-tab home">
           <a href="index.php" target="_blank"><img src="img/home.png" alt="Home">Home</a>
         </div>
-        <div class="nav-tab">
+        <div class="nav-tab contact">
           <a href="contact.php" target="_blank"><img src="img/contacts.png" alt="Contact Us">Contact Us</a>
         </div>
-        <div class="nav-tab">
+        <div class="nav-tab register">
           <a href="register.php" target="_blank"><img src="img/register.png" alt="Register Now">Register</a>
         </div>
-        <div class="nav-tab">
+        <div class="nav-tab spots">
           <a href="spots.php" target="_blank"><img src="img/chillies.png" alt="hot spots">Famous Spots</a>
         </div>
-        <div class="nav-tab">
-          <a href="https://tenor.com/search/cute-kitten-gifs" target="_blank"><img src="img/avatar.gif" alt="fun">Fun</a>
+        <div class="nav-tab add-agent">
+          <a href="new-agent.php" target="_blank"><img src="img/add.png" alt="fun">Add Agent</a>
         </div>
-        <div class="nav-tab">
-          <a href="links.php" target="_blank"><img src="img/computer.png" alt="tech">Links Page</a>
+        <div class="nav-tab links">
+          <a href="links.php" target="_blank"><img src="img/computer.png" alt="tech">Links</a>
         </div>
   </nav>
 

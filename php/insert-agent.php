@@ -4,8 +4,15 @@
 
 
   if (isset($_POST)) {
-    print_r($_POST);  // print the POST array
-    //TODO 1.get the database, 2.include insert function, 3.pass post array into function 4.print succeed fail message
+    // TODO  validate all fields
+    print_r($_POST);
+    echo "<hr>";
+    if (preg_match('/[12]/',$_POST['AgencyId'])) {
+      echo "agency id matches.<br>";
+    } else {
+      echo "please enter agency ID.<br>";
+    }
+    // 1.get the database, 2.include insert function, 3.pass post array into function 4.print succeed fail message
 
     include_once('function.php');
 

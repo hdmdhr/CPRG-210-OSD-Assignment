@@ -35,6 +35,7 @@
 
       echo "</table>";
 
+      include_once('php/footer.php');
 
      ?>
    </body>

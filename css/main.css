@@ -55,9 +55,9 @@ nav {
 }
 
 .nav-tab-current {
-  padding: 1rem 3rem;
+  padding: 0.5rem 1rem;
   background-color: RGBA(189, 183, 107, 0.75);
-  border-radius: 40%;
+  border-radius: 20%;
 }
 
 nav a img {
@@ -74,8 +74,8 @@ nav a {
 /* --- Side Bar --- */
 aside {
   position: fixed;
-  left: 1rem;
-  float: left;
+  left: 5%;
+  /* float: left; */
   background-color: RGBA(189, 183, 107, 0.25);
   text-align: left;
   z-index: 2;

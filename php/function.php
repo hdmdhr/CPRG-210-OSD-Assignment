@@ -1,8 +1,8 @@
 <?php
 
-function insertArrayInto(array $agentsArray, $database){
 
-// $fields = $values = array();  // can comment this line
+
+function insertArrayInto(array $agentsArray, $database){
 
   foreach ($agentsArray as $k => $v) {
     $fields[] = $k;

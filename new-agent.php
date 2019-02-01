@@ -18,7 +18,7 @@
  ?>
 
   <h2>Create a New Agent</h2>
-  <form class="needs-validation" novalidate="" method="post" action="php/insert-agent.php">
+  <form class="needs-validation" method="post" action="php/insert-agent.php">
     <div class="row">
       <div class="col-md-6 mb-3">
         <label for="firstName">First name</label>
@@ -38,7 +38,7 @@
 
     <div class="mb-3">
       <label for="phone">Phone</label>
-      <input type="text" class="form-control" id="phone" name="AgtBusPhone" placeholder="(123)456-7890">
+      <input type="text" class="form-control" id="phone" name="AgtBusPhone" placeholder="(123)456-7890" pattern="\([0-9]{3}\)[0-9]{3}-[0-9]{4}" required>
       <div class="invalid-feedback">
         Please enter a valid phone number.
       </div>
@@ -78,5 +78,8 @@
     <button class="btn btn-primary btn-lg btn-block" type="submit">Generate agent info</button>
   </form>
 
+<?php
+  include_once('php/footer.php');
+ ?>
 
 </body>

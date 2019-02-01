@@ -4,19 +4,22 @@ var title = document.querySelector('title').text;
 
 switch (title) {
   case 'Travel Experts':
-    $('.nav-tab')[0].classList.add('nav-tab-current');
+    $('.home')[0].classList.add('nav-tab-current');
     break;
   case 'Contact Us':
-    $('.nav-tab')[1].classList.add('nav-tab-current');
+    $('.contact')[0].classList.add('nav-tab-current');
     break;
   case 'Register':
-    $('.nav-tab')[2].classList.add('nav-tab-current');
+    $('.register')[0].classList.add('nav-tab-current');
     break;
   case 'Famous Spots':
-    $('.nav-tab')[3].classList.add('nav-tab-current');
+    $('.spots')[0].classList.add('nav-tab-current');
     break;
   case 'Links':
-    $('.nav-tab')[5].classList.add('nav-tab-current');
+    $('.links')[0].classList.add('nav-tab-current');
+    break;
+  case 'Add New Agent':
+    $('.add-agent')[0].classList.add('nav-tab-current');
     break;
   default:
     break;
