@@ -60,7 +60,7 @@
       echo "Connected to database successfully.".mysqli_get_host_info($dbh);
     }
 
-
+    // Read from SQL
     if ($result = mysqli_query($dbh, "SELECT * FROM products")) {
 
       // while ($rowarray = mysqli_fetch_row($result)) {
@@ -76,16 +76,16 @@
       mysqli_free_result($result);
     }
 
-    // Insert
-/*    $insert = "INSERT INTO agents(AgtFirstName, AgtLastName) VALUES ('Sheldon','Cooper')";
-    if (mysqli_query($dbh, $insert)){
+    // Insert into SQL
+/*    $insertSql = "INSERT INTO agents(AgtFirstName, AgtLastName) VALUES ('Sheldon','Cooper')";
+    if (mysqli_query($dbh, $insertSql)){
       echo "<h3>Insert successfully.</h3>";
     } else {
       echo "<h3>Insert failed.</h3>";
     }
     */
 
-    // Check if insertion succeeded
+    // Read and print out table to check if insertion succeeded
     if ($result = mysqli_query($dbh, "SELECT * FROM agents")) {
 
       echo "<table class='table'>";
@@ -101,6 +101,38 @@
       }
       echo "</table>";
     }
+
+    // Update SQL
+    $agentId = 34;
+    $updateSql = "UPDATE agents
+    SET AgtBusPhone='(780)616-7477', AgentId=35 WHERE AgentId=$agentId";
+    if(mysqli_query($dbh, $updateSql)){
+      echo "<h2>Update succeeded!</h2>";
+    } else {
+      echo "<h2>Update failed!</h2>";
+    }
+
+    // Delete SQL
+    // $deleteSql = "DELETE FROM agents WHERE AgentId=35";
+    // if (mysqli_query($dbh, $deleteSql)){
+    //   echo "<h2>Delete succeeded!</h2>";
+    // } else {
+    //   echo "<h2>Delete failed!</h2>";
+    // }
+
+    // Prepared statement
+    $stmt = mysqli_prepare($dbh, "INSERT INTO agents (AgtFirstName,AgtLastName,AgtBusPhone,AgtEmail,AgencyId) VALUES (?, ?, ?, ?, ?)");
+    mysqli_stmt_bind_param($stmt, 'ssssi', $fName, $lName, $phone, $email, $agencyId);
+    $fName = 'Stool';
+    $lName = 'Lee';
+    $phone = '(123)456-7890';
+    $email = '1@2.com';
+    $agencyId = 1;
+
+    mysqli_stmt_execute($stmt);
+    printf("%d Row inserted.\n", mysqli_stmt_affected_rows($stmt));
+
+    mysqli_stmt_close($stmt);
 
     mysqli_close($dbh);
 

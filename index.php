@@ -16,6 +16,7 @@
     require_once('php/header.php')
    ?>
 
+
   <div class="gallery">
     <div class="picture-box">
       <img src="img/Australia.jpg" alt="Australia Landscape">

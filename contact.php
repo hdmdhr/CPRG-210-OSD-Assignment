@@ -18,7 +18,6 @@
  ?>
 
 
-
   <h2>International Contacts Table</h2>
   <table class="table">
     <thead>

@@ -14,7 +14,7 @@ $agents = array(
   'AgtBusPhone' => '(780)616-7477',
   'AgtEmail' => 'hdmdhr@gmail.com',
   'AgtPosition' => 'Junior Agent',
-  // 'AgencyId' => 2
+  'AgencyId' => 2
 );
 
 
