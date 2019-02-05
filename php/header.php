@@ -9,16 +9,17 @@
 
   <div class="welcome-banner">
     <?php
+    // --- Send regards according to the current time ---
         date_default_timezone_set("Canada/Mountain");
         $hour = localtime()[2];  // 24 hour unit
         $time = substr(date('h'), 1, 2);  // 12 hour unit
         echo "<h3>It's $time ".date('A').", ";
         if ($hour < 12){
-          echo "<img src='img/avatar.gif'>Good Morning";
+          echo "<img src='img/avatar.gif' class='mx-2'>Good Morning";
         } elseif ($hour >= 12 && $hour < 17) {
-          echo "<img src='img/chillies.png'>Good Afternoon";
+          echo "<img src='img/chillies.png' class='mx-2'>Good Afternoon";
         } elseif ($hour >= 17) {
-          echo "<img src='img/home.png'>Good Evening";
+          echo "<img src='img/home.png' class='mx-2'>Good Evening";
         }
         echo " Dude.</h3>";
 
@@ -39,7 +40,7 @@
           <a href="spots.php" target="_blank"><img src="img/chillies.png" alt="hot spots">Famous Spots</a>
         </div>
         <div class="nav-tab add-agent">
-          <a href="new-agent.php" target="_blank"><img src="img/add.png" alt="fun">Add Agent</a>
+          <a href="login.php" target="_blank"><img src="img/add.png" alt="fun">Add Agent</a>
         </div>
         <div class="nav-tab links">
           <a href="links.php" target="_blank"><img src="img/computer.png" alt="tech">Links</a>
