@@ -1,3 +1,50 @@
+<?php
+if(session_id() == '' || !isset($_SESSION)) {
+    // session isn't started
+    session_start();
+}
+
+// if (!isset($_COOKIE['login-session'])) {
+//   setcookie('login-session', $_SESSION['user-id'], time()+3600*5);
+// }
+
+  // --- Reading users-info.txt and convert to hashtable ---
+  // TODO: read from database agent table instead
+  $array = array();
+  foreach (file('users-info.txt') as $line => $lineValue) {
+    list($userId,$password) = explode(",",trim($lineValue));
+    $array += [$userId => $password];
+  }
+  print_r($array);  // now array is (userId => pin), use it to validate login
+
+  if ($_POST) {
+    $_POST['tries']++;
+    $_SESSION['try-times'] = $_POST['tries'];  // save try times to a session to remember
+    if ($_SESSION['try-times'] >= 5) {
+      echo "<h2>You've reached the maximum try times, try 5 hours later.</h2>";
+    }
+    print_r($_POST);
+
+    $ID = $_POST['UserId'];
+    if (array_key_exists($ID,$array)) {
+      echo "<h2>Found user ID.</h2>";
+      if ($_POST['Password'] === $array[$ID]) {
+        echo "<h2>Password match.</h2>";
+        // TODO: login user, save user-id to session, head to agent entry page
+        $_SESSION['user-id'] = $_POST['UserId'];
+        echo "<h2>User-id is <em>".$_SESSION['user-id']."</em>, now about to go to agent entry page.</h2>";
+
+        if (isset($_SESSION['user-id'])) {
+          header("Location: http://localhost/CPRG-210-OSD-Assignment/new-agent.php");
+          exit();
+        }
+
+      } else { echo "<h2>Password does NOT match.</h2>"; }
+    } else { echo "<h2>User ID does NOT match.</h2>"; }
+  } else { echo "No post received."; }
+
+ ?>
+
 <!doctype html>
 <html lang="en">
 
@@ -16,11 +63,13 @@
 </head>
 
 <body class="text-center">
-  <form class="form-signin" method="post" action="">
+  <?php include_once('php/header.php') ?>
+
+  <form class="form-signin mt-5" method="post" action="#">
     <a href="index.php" target="_blank">
       <img class="mb-2" src="img/balloon.png" alt="logo" width="72" height="72">
     </a>
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+    <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
     <label for="user-id" class="sr-only">User ID</label>
     <input type="text" id="user-id" class="form-control" name="UserId" placeholder="Email address" required autofocus>
     <label for="inputPassword" class="sr-only">Password</label>
@@ -28,9 +77,9 @@
     <div class="checkbox mb-3">
       <label>
         <input type="checkbox" name="rememberMe" value="rememberMe"> Remember me
-        <input type="hidden" name="tries" value="0">
       </label>
     </div>
+    <input type="hidden" name="tries" value="0">
     <button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>
   </form>
 </body>
@@ -38,34 +87,3 @@
 <?php include_once('php/footer.php') ?>
 
 </html>
-
-<?php
-
-  // --- Reading users-info.txt and convert to hashtable ---
-  $array = array();
-  foreach (file('users-info.txt') as $line => $lineValue) {
-    list($userId,$password) = explode(",",trim($lineValue));
-    $array += [$userId => $password];
-  }
-  echo "<hr>";
-  print_r($array);  // now array is (userId => pin), use it to validate login
-  echo "<hr>";
-
-  if ($_POST) {
-    $_POST['tries']++;
-    print_r($_POST);
-
-    $ID = $_POST['UserId'];
-    if (array_key_exists($ID,$array)) {
-      echo "<h2>Found user ID.</h2>";
-      if ($_POST['Password'] === $array[$ID]) {
-        echo "<h2>Password match.</h2>";
-      } else {
-        echo "<h2>Password does NOT match.</h2>";
-      }
-    }
-  } else {
-    echo "No post received.";
-  }
-
- ?>

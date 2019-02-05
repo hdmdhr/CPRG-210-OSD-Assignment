@@ -15,14 +15,18 @@
         $time = substr(date('h:i'), 0, 5);  // 12 hour unit
         echo "<h3>It's $time ".date('A').", ";
         if ($hour < 12){
-          echo "<img src='img/avatar.gif' class='mx-2'>Good Morning";
+          echo "<img src='img/avatar.gif' class='mx-2'>Good Morning ";
         } elseif ($hour >= 12 && $hour < 17) {
-          echo "<img src='img/chillies.png' class='mx-2'>Good Afternoon";
+          echo "<img src='img/balloon.png' class='mx-2'>Good Afternoon ";
         } elseif ($hour >= 17) {
-          echo "<img src='img/home.png' class='mx-2'>Good Evening";
+          echo "<img src='img/home.png' class='mx-2'>Good Evening ";
         }
-        echo " Dude.</h3>";
-
+        // TODO: if logged in, say the name in session['user-id']
+        if (isset($_SESSION['user-id'])) {
+          echo "<em>".$_SESSION['user-id']."</em>.<a href='logout.php' ><button class='btn btn-secondary ml-4'>Logout</button></a></h3>";
+        } else {
+          echo "Dude.</h3>";
+        }
        ?>
   </div>
 
@@ -40,7 +44,7 @@
           <a href="spots.php" target="_blank"><img src="img/chillies.png" alt="hot spots">Famous Spots</a>
         </div>
         <div class="nav-tab add-agent">
-          <a href="login.php" target="_blank"><img src="img/add.png" alt="fun">Add Agent</a>
+          <a href="new-agent.php" target="_blank"><img src="img/add.png" alt="fun">Add Agent</a>
         </div>
         <div class="nav-tab links">
           <a href="links.php" target="_blank"><img src="img/computer.png" alt="tech">Links</a>

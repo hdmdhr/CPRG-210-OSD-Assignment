@@ -1,7 +1,15 @@
 <?php
-if (!isset($_COOKIE['entry_agent'])) {
-  setcookie('entry_agent', time(), time()+3600*5);
+if(session_id() == '' || !isset($_SESSION)) {
+    // session isn't started
+    session_start();
 }
+
+  if (!isset($_SESSION['user-id'])) {
+    header("Location: http://localhost/CPRG-210-OSD-Assignment/login.php");
+  } else {
+    $userId = $_SESSION['user-id'];
+    echo "<h2>Good to see you, Dear Agent <em>".$_SESSION['user-id']."</em></h2>";
+  }
 ?>
 
 <!DOCTYPE html>
@@ -21,10 +29,6 @@ if (!isset($_COOKIE['entry_agent'])) {
 
   <?php
   include_once('php/header.php');
-  if (isset($_COOKIE['entry_agent'])) {
-    $timeChange = time() - $_COOKIE['entry_agent'];
-    echo "<h3>You've been on this page for ".$timeChange." seconds.</h3>";
-  }
  ?>
 
   <h2>Create a New Agent</h2>
