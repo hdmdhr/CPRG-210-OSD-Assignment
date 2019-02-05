@@ -22,9 +22,8 @@
       echo "<h2>Agent ".$_POST['AgtFirstName']."'s info was successfully inserted into database.</h2>";
 
       // apeend message to a log file
-      $txt = $_POST['AgtFirstName']."'s information was added at ".date('l jS \of F Y h:i:s A ')."<hr>";
-      $myfile = file_put_contents('logs.html', $txt.PHP_EOL , FILE_APPEND | LOCK_EX);
-
+      $txt = "".$_POST['AgtFirstName']." ".$_POST['AgtLastName']."'s information was added at ".date('l jS \of F Y h:i:s A').".";
+      $myfile = file_put_contents('logs.txt', $txt.PHP_EOL , FILE_APPEND | LOCK_EX);
     } else {
       echo "<h2>Couldn't insert agent information.</h2>";
     }

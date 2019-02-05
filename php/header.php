@@ -12,7 +12,7 @@
     // --- Send regards according to the current time ---
         date_default_timezone_set("Canada/Mountain");
         $hour = localtime()[2];  // 24 hour unit
-        $time = substr(date('h'), 1, 2);  // 12 hour unit
+        $time = substr(date('h:i'), 0, 5);  // 12 hour unit
         echo "<h3>It's $time ".date('A').", ";
         if ($hour < 12){
           echo "<img src='img/avatar.gif' class='mx-2'>Good Morning";

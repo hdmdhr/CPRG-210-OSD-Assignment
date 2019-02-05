@@ -1,3 +1,9 @@
+<?php
+if (!isset($_COOKIE['entry_agent'])) {
+  setcookie('entry_agent', time(), time()+3600*5);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +20,11 @@
 <body>
 
   <?php
-  include_once('php/header.php')
+  include_once('php/header.php');
+  if (isset($_COOKIE['entry_agent'])) {
+    $timeChange = time() - $_COOKIE['entry_agent'];
+    echo "<h3>You've been on this page for ".$timeChange." seconds.</h3>";
+  }
  ?>
 
   <h2>Create a New Agent</h2>
