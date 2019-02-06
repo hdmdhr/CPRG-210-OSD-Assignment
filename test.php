@@ -92,7 +92,7 @@
       while ($agentsrow = mysqli_fetch_array($result, MYSQLI_NUM)){
         echo "<tr><td>$agentsrow[0]</td>
         <td>$agentsrow[1]</td>
-        <td>$agentsrow[2]</td>
+        <td>$agentsrow[2]</td> 
         <td>$agentsrow[3]</td>
         <td>$agentsrow[4]</td>
         <td>$agentsrow[5]</td>

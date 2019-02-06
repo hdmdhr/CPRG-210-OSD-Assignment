@@ -2,7 +2,7 @@
 
 
 
-function insertArrayInto(array $agentsArray, $database){
+function insertArrayIntoDBTable(array $agentsArray, $database, $tableName){
 
   foreach ($agentsArray as $k => $v) {
     $fields[] = $k;
@@ -11,13 +11,11 @@ function insertArrayInto(array $agentsArray, $database){
   $fields = implode(",", $fields);
   $values = implode(",", $values);
 
-  $insertSQL = "INSERT INTO agents ($fields) VALUES ($values)";
-  if (mysqli_query($database, $insertSQL)){
-    return true;
-  } else {
-    return false;
-  }
+  $insertSQL = "INSERT INTO $tableName ($fields) VALUES ($values)";
+  $result = mysqli_query($database, $insertSQL);
+  mysqli_close($database);
 
+  return $result;
 }
 
  ?>

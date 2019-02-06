@@ -7,7 +7,6 @@ if(session_id() == '' || !isset($_SESSION)) {
   if (!isset($_SESSION['user-id'])) {
     header("Location: http://localhost/CPRG-210-OSD-Assignment/login.php");
   } else {
-    $userId = $_SESSION['user-id'];
     echo "<h2>Good to see you, Dear Agent <em>".$_SESSION['user-id']."</em></h2>";
   }
 ?>
@@ -52,7 +51,7 @@ if(session_id() == '' || !isset($_SESSION)) {
 
     <div class="mb-3">
       <label for="phone">Phone</label>
-      <input type="text" class="form-control" id="phone" name="AgtBusPhone" placeholder="(123)456-7890" pattern="\([0-9]{3}\)[0-9]{3}-[0-9]{4}" required>
+      <input type="text" class="form-control" id="phone" name="AgtBusPhone" placeholder="(123)456-7890" pattern="\([0-9]{3}\)[0-9]{3}-[0-9]{4}">
       <div class="invalid-feedback">
         Please enter a valid phone number.
       </div>
@@ -89,7 +88,7 @@ if(session_id() == '' || !isset($_SESSION)) {
 
     </div>
 
-    <button class="btn btn-primary btn-lg btn-block" type="submit">Generate agent info</button>
+    <button class="btn btn-primary btn-lg btn-block" type="submit">Create New Agent</button>
   </form>
 
 <?php

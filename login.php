@@ -1,6 +1,5 @@
 <?php
 if(session_id() == '' || !isset($_SESSION)) {
-    // session isn't started
     session_start();
 }
 
@@ -11,36 +10,28 @@ if(session_id() == '' || !isset($_SESSION)) {
   // --- Reading users-info.txt and convert to hashtable ---
   // TODO: read from database agent table instead
   $array = array();
-  foreach (file('users-info.txt') as $line => $lineValue) {
-    list($userId,$password) = explode(",",trim($lineValue));
-    $array += [$userId => $password];
+  foreach (file('users-info.txt') as $line) {  // file() generate a num array
+    list($userId,$password) = explode(",",trim($line));
+    $array += [$userId => $password];  // array is (userId => pin), use to validate login
   }
-  print_r($array);  // now array is (userId => pin), use it to validate login
+  print_r($array);
 
   if ($_POST) {
+    print_r($_POST);
     $_POST['tries']++;
-    $_SESSION['try-times'] = $_POST['tries'];  // save try times to a session to remember
+    $_SESSION['try-times'] = $_POST['tries'];  // save try times to a session
     if ($_SESSION['try-times'] >= 5) {
       echo "<h2>You've reached the maximum try times, try 5 hours later.</h2>";
     }
-    print_r($_POST);
 
     $ID = $_POST['UserId'];
-    if (array_key_exists($ID,$array)) {
-      echo "<h2>Found user ID.</h2>";
-      if ($_POST['Password'] === $array[$ID]) {
-        echo "<h2>Password match.</h2>";
-        // TODO: login user, save user-id to session, head to agent entry page
+    if (array_key_exists($ID,$array)) {  // user-id match
+      if ($_POST['Password'] === $array[$ID]) {  // pin match
+        // save user-id to session, head to agent entry page
         $_SESSION['user-id'] = $_POST['UserId'];
-        echo "<h2>User-id is <em>".$_SESSION['user-id']."</em>, now about to go to agent entry page.</h2>";
-
-        if (isset($_SESSION['user-id'])) {
-          header("Location: http://localhost/CPRG-210-OSD-Assignment/new-agent.php");
-          exit();
-        }
-
-      } else { echo "<h2>Password does NOT match.</h2>"; }
-    } else { echo "<h2>User ID does NOT match.</h2>"; }
+        header("Location: http://localhost/CPRG-210-OSD-Assignment/new-agent.php");
+      } else { echo "<h2 class='alert alert-danger' role='alert'>Password or User ID do NOT match.</h2>"; }
+    } else { echo "<h2 class='alert alert-danger' role='alert'>User ID or Password do NOT match.</h2>"; }
   } else { echo "No post received."; }
 
  ?>

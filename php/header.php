@@ -9,6 +9,10 @@
 
   <div class="welcome-banner">
     <?php
+      if(session_id() == '' || !isset($_SESSION)) {
+          session_start();
+      }
+
     // --- Send regards according to the current time ---
         date_default_timezone_set("Canada/Mountain");
         $hour = localtime()[2];  // 24 hour unit
@@ -23,30 +27,30 @@
         }
         // TODO: if logged in, say the name in session['user-id']
         if (isset($_SESSION['user-id'])) {
-          echo "<em>".$_SESSION['user-id']."</em>.<a href='logout.php' ><button class='btn btn-secondary ml-4'>Logout</button></a></h3>";
+          echo "<em>".$_SESSION['user-id']."</em>.<a href='logout.php' ><button class='btn btn-outline-secondary ml-4'>Logout</button></a></h3>";
         } else {
-          echo "Dude.</h3>";
+          echo "Dude.<a href='login.php' ><button class='btn btn-outline-primary ml-4'>Login</button></a></h3>";
         }
        ?>
   </div>
 
-  <nav class="nav-bar">
-        <div class="nav-tab home">
+  <nav class="nav-bar row">
+        <div class="nav-tab home col-sm-4 col-md-2">
           <a href="index.php" target="_blank"><img src="img/home.png" alt="Home">Home</a>
         </div>
-        <div class="nav-tab contact">
+        <div class="nav-tab contact col-sm-4 col-md-2">
           <a href="contact.php" target="_blank"><img src="img/contacts.png" alt="Contact Us">Contact Us</a>
         </div>
-        <div class="nav-tab register">
+        <div class="nav-tab register col-sm-4 col-md-2">
           <a href="register.php" target="_blank"><img src="img/register.png" alt="Register Now">Register</a>
         </div>
-        <div class="nav-tab spots">
+        <div class="nav-tab spots col-sm-4 col-md-2">
           <a href="spots.php" target="_blank"><img src="img/chillies.png" alt="hot spots">Famous Spots</a>
         </div>
-        <div class="nav-tab add-agent">
+        <div class="nav-tab add-agent col-sm-4 col-md-2">
           <a href="new-agent.php" target="_blank"><img src="img/add.png" alt="fun">Add Agent</a>
         </div>
-        <div class="nav-tab links">
+        <div class="nav-tab links col-sm-4 col-md-2">
           <a href="links.php" target="_blank"><img src="img/computer.png" alt="tech">Links</a>
         </div>
   </nav>

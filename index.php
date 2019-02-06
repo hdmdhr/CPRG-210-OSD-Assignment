@@ -12,29 +12,30 @@
 </head>
 
 <body>
+  <div class="veil">
   <?php
     require_once('php/header.php')
    ?>
 
 
-  <div class="gallery">
-    <div class="picture-box">
+  <div class="gallery row">
+    <div class="picture-box col-md-4 col-lg-2">
       <img src="img/Australia.jpg" alt="Australia Landscape">
       <p class="caption">Australia Landscape</p>
     </div>
-    <div class="picture-box">
+    <div class="picture-box col-md-4 col-lg-2">
       <img src="img/Norway.jpg" alt="Norway Landscape">
       <p class="caption">Norway Forest</p>
     </div>
-    <div class="picture-box">
+    <div class="picture-box col-md-4 col-lg-2">
       <p class="caption">Canadian Mountains</p>
       <img src="img/Canada.jpg" alt="Canada Landscape">
     </div>
-    <div class="picture-box">
+    <div class="picture-box col-md-6 col-lg-2">
       <p class="caption">Japanese Temple</p>
       <img src="img/Japan.jpg" alt="Canada Landscape">
     </div>
-    <div class="picture-box">
+    <div class="picture-box col-md-6 col-lg-2">
       <p class="caption">China Valley</p>
       <img src="img/China.jpg" alt="Canada Landscape">
     </div>
@@ -259,7 +260,7 @@
   require_once('php/footer.php');
  ?>
 
-
+</div>
 </body>
 
 </html>
