@@ -1,16 +1,14 @@
 <?php
 
-
-  /**
-   *
-   */
   class Agent extends Person {
-    protected $midNameInit;
-    protected $postion;
-    protected $agencyId;
+    public $midNameInit;
+    public $postion;
+    public $agencyId;
+    public static $fields = array('AgtMiddleInitial','AgtPosition','AgencyId','AgentId','AgtFirstName','AgtLastName','AgtBusPhone','AgtEmail');
+    public static $fieldsType = 'ssiissss';
 
-    function __construct($id,$fn,$mi,$ln,$bp,$e,$po,$ai) {
-      parent::__construct($id,$fn,$ln,$bp,$e);
+    function __construct($fn,$ln,$bp,$e,$po,$ai,$mi=NULL) {
+      parent::__construct($fn,$ln,$bp,$e);
       $this->midNameInit = $mi;
       $this->postion = $po;
       $this->agencyId = $ai;
@@ -33,19 +31,20 @@
     }
 
     function __toString(){
-      $properties1 = get_object_vars($this->parent);
-      $properties = get_object_vars($this);
-      $str = "";
-      foreach ($properties as $property => $value) {
-        $str .= $value.",";
-      }
+      $propertiesArray = get_object_vars($this);
+
+      $str = implode(', ',$propertiesArray);
       return $str;
     }
   }
 
-  $a = new Agent(1,'DongMing','','Hu','12345','1@2.com','Boss',1);
-  echo "$a";
+  //---- Test area ----
 
+  $test = new Agent('DongMing','Hu','780616-7477','1@2.com','Boss',2,'ASM');
+  print_r(get_object_vars($test));
+  echo $test;
+
+  // ------------
 
   class person {
     public $id;
@@ -53,9 +52,8 @@
     public $lastName;
     public $busPhone;
     public $email;
-    function __construct($id,$firstName,$lastName,$busPhone,$email)
+    function __construct($firstName,$lastName,$busPhone,$email)
     {
-      $this->id = $id;
       $this->firstName = $firstName;
       $this->lastName = $lastName;
       $this->busPhone = $busPhone;
@@ -69,7 +67,7 @@
   }
 
   /**
-   *
+   * unused class
    */
   class Customer extends Person {
     public $address;
@@ -80,8 +78,8 @@
     public $homePhone;
     public $agentId;
 
-    function __construct($id,$fName,$lName,$busP,$email,$add,$city,$prov,$post,$country,$homeP,$agtId) {
-      parent::__construct($id,$fName,$lName,$busP,$email);
+    function __construct($fName,$lName,$busP,$email,$add,$city,$prov,$post,$country,$homeP,$agtId) {
+      parent::__construct($fName,$lName,$busP,$email);
       $this->address = $add;
       $this->city = $city;
       $this->prov = $prov;

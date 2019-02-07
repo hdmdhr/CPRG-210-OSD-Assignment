@@ -1,4 +1,12 @@
 <?php
+/**************************
+*
+* Author: DongMing Hu
+* Date: Feb. 11, 2019
+* Description: new agent entry page requires login to view
+*
+**************************/
+
 if(session_id() == '' || !isset($_SESSION)) {
     // session isn't started
     session_start();

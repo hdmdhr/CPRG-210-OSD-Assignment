@@ -1,3 +1,13 @@
+<!--
+/**************************
+*
+* Author: DongMing Hu
+* Date: Feb. 11, 2019
+* Description: home page of Travel Experts website
+*
+**************************/
+  -->
+
 <!DOCTYPE html>
 <html lang="en">
 
