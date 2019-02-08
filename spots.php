@@ -1,3 +1,11 @@
+/**************************
+*
+* Author: DongMing Hu
+* Date: Feb. 11, 2019
+* Description: a page to show some popular spots
+*
+**************************/
+
 <!DOCTYPE html>
 <html lang="en">
 

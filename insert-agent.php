@@ -1,11 +1,18 @@
 <?php
+/**************************
+*
+* Author: DongMing Hu
+* Date: Feb. 11, 2019
+* Description: agent entry form is posted to this page, validated here
+*
+**************************/
+
 if (isset($_POST)) {
-    // Validate all fields, if any empty, show error, fill form with old data
+    // if any input invalid, save error and old data, send back to agent entry form
   $errorMsg = '';
   foreach ($_POST as $inputName => $inputValue) {
-    // 1.if empty, show error msg, 2.if any error, send $_POST back,
     if (empty($inputValue)) {
-      $errorMsg .= "Need a valid ".$inputName.".<br>";
+      $errorMsg .= "Need a valid <em>".$inputName.".</em><br>";
     }
   }
 
@@ -15,13 +22,6 @@ if (isset($_POST)) {
     $_SESSION['invalidated_post'] = $_POST;
     header("Location: http://localhost/CPRG-210-OSD-Assignment/new-agent.php");
   }
-
-  // To Delete -----
-  // if (preg_match('/[12]/',$_POST['AgencyId'])) {
-  //   echo "agency id matches.<br>";
-  // } else {
-  //   echo "please enter agency ID.<br>";
-  // }
 
 }
  ?>
@@ -33,18 +33,16 @@ if (isset($_POST)) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Agent Added to Database</title>
+  <title>Agent Inserted Into Database</title>
   <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900|Raleway:400,700,700i,900" rel="stylesheet">
-  <link rel="stylesheet" href="../css/bootstrap.css">
-  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body>
 
 <?php
-  include_once('menu.php');
-
-  // if (isset($_POST)) {
+  include_once('php/menu.php');
 
     // 1.connect database, 2.include insert func, 3.use $_POST to create obj, 4.pass obj into insert func, 5.print succeed or fail.
 
@@ -55,8 +53,8 @@ if (isset($_POST)) {
       exit;
     }
 
-    include_once('function.php');
-    include_once('classes.php');
+    include_once('php/function.php');
+    include_once('php/classes.php');
 
     $postValueArray = array_values($_POST);
 
@@ -71,7 +69,7 @@ if (isset($_POST)) {
       echo "<h2>Couldn't insert agent information.";
     }
     // create a button to go back to agent entry page
-    echo "<a href='../new-agent.php' ><button class='btn btn-outline-secondary ml-4'>Go Back</button></a></h2>";
+    echo "<a href='new-agent.php' ><button class='btn btn-outline-secondary ml-4'>Go Back</button></a></h2>";
 
 
   /*  ---- Old: insert array into database ----
@@ -86,10 +84,8 @@ if (isset($_POST)) {
       echo "<h2>Sorry, couldn't insert agent information.";
     }
       // Create a button to go back
-    <a href='../new-agent.php' ><button class='btn btn-outline-secondary ml-4'>Go Back</button></a></h2>
+    <a href='new-agent.php' ><button class='btn btn-outline-secondary ml-4'>Go Back</button></a></h2>
 */
-
-  // }
 
  ?>
 

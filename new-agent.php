@@ -3,7 +3,7 @@
 *
 * Author: DongMing Hu
 * Date: Feb. 11, 2019
-* Description: new agent entry page requires login to view
+* Description: agent entry page whcih requires login to view
 *
 **************************/
 
@@ -12,11 +12,9 @@ if(session_id() == '' || !isset($_SESSION)) {
     session_start();
 }
 
-  if (!isset($_SESSION['user-id'])) {
-    header("Location: http://localhost/CPRG-210-OSD-Assignment/login.php");
-  } else {
-    // echo "<h2>Good to see you, Dear Agent <em>".$_SESSION['user-id']."</em></h2>";
-  }
+if (!isset($_SESSION['user-id'])) {
+  header("Location: http://localhost/CPRG-210-OSD-Assignment/login.php");
+}
 
 ?>
 
@@ -39,30 +37,34 @@ if(session_id() == '' || !isset($_SESSION)) {
   include_once('php/header.php');
 
   $oldData = array();
-  if ($_SESSION['invalidated_post'] && $_SESSION['errorMsg']) {
-    // TODO: show error message, put invalidated data back to table
-    echo "<div class='alert alert-danger'><h4>".$_SESSION['errorMsg']."</h4></div>";
-    print_r($_SESSION['invalidated_post']);
+  if (isset($_SESSION['invalidated_post'])) {
+    // save error message, save invalidated data
+    $errorMsg = "<h4 class='alert alert-danger text-center'>".$_SESSION['errorMsg']."</h4>";
     $oldData = $_SESSION['invalidated_post'];
-    // unset($_SESSION['invalidated_post']);
-    // unset($_SESSION['errorMsg']);
+    unset($_SESSION['invalidated_post']);
+    unset($_SESSION['errorMsg']);
   }
 
  ?>
 
-  <h2>Create a New Agent</h2>
-  <form class="needs-validation" method="post" action="php/insert-agent.php">
+  <form class="needs-validation" method="post" action="insert-agent.php">
+    <?php if (isset($errorMsg)) {
+        echo "<h3 class='alert alert-danger text-center'><em>Could not insert agent.</em></h3>";
+        echo $errorMsg;
+      } ?>
+    <h2>Enter a New Agent</h2>
     <div class="row">
       <div class="col-md-6 mb-3">
         <label for="firstName">First name</label>
-        <input type="text" class="form-control" id="firstName" name="AgtFirstName" placeholder="First Name" value="<?php echo $oldData['AgtFirstName']; ?>" autofocus required>
+        <!-- if have value from last sumit, show it, otherwise, no value -->
+        <input type="text" class="form-control" id="firstName" name="AgtFirstName" placeholder="First Name" value="<?php if ($oldData):?><?php echo $oldData['AgtFirstName']; endif ?>" autofocus required>
         <div class="invalid-feedback">
           Valid first name is required.
         </div>
       </div>
       <div class="col-md-6 mb-3">
         <label for="lastName">Last name</label>
-        <input type="text" class="form-control" id="lastName" name="AgtLastName" placeholder="Last Name" value="<?php echo $oldData['AgtLastName']; ?>" required>
+        <input type="text" class="form-control" id="lastName" name="AgtLastName" placeholder="Last Name" value="<?php if ($oldData):?><?php echo $oldData['AgtLastName']; endif ?>">
         <div class="invalid-feedback">
           Valid last name is required.
         </div>
@@ -71,7 +73,7 @@ if(session_id() == '' || !isset($_SESSION)) {
 
     <div class="mb-3">
       <label for="phone">Phone</label>
-      <input type="text" class="form-control" id="phone" name="AgtBusPhone" placeholder="(123)456-7890" pattern="\([0-9]{3}\)[0-9]{3}-[0-9]{4}" value="<?php echo $oldData['AgtBusPhone']; ?>">
+      <input type="text" class="form-control" id="phone" name="AgtBusPhone" placeholder="(123)456-7890" pattern="\([0-9]{3}\)[0-9]{3}-[0-9]{4}" value="<?php if ($oldData):?><?php echo $oldData['AgtBusPhone']; endif ?>">
       <div class="invalid-feedback">
         Please enter a valid phone number.
       </div>
@@ -79,7 +81,7 @@ if(session_id() == '' || !isset($_SESSION)) {
 
     <div class="mb-3">
       <label for="email">Email <span class="text-muted"></span></label>
-      <input type="email" class="form-control" id="email" name="AgtEmail" placeholder="you@example.com" value="<?php echo $oldData['AgtEmail']; ?>" required>
+      <input type="email" class="form-control" id="email" name="AgtEmail" placeholder="you@example.com" value="<?php if ($oldData):?> <?php echo $oldData['AgtEmail']; endif ?>">
       <div class="invalid-feedback">
         Please enter a valid email address.
       </div>
@@ -89,7 +91,7 @@ if(session_id() == '' || !isset($_SESSION)) {
 
       <div class="col-md-6 mb-3">
         <label for="position">Position</label>
-        <select class="custom-select d-block w-100" id="postion" name="AgtPosition">
+        <select class="custom-select d-block w-100" id="position" name="AgtPosition">
           <option value="">--- Choose ---</option>
           <option value="Junior Agent">Junior Agent</option>
           <option value="Intermediate Agent">Intermediate Agent</option>
@@ -108,7 +110,7 @@ if(session_id() == '' || !isset($_SESSION)) {
 
     </div>
 
-    <button class="btn btn-primary btn-lg btn-block" type="submit">Create New Agent</button>
+    <button class="btn btn-primary btn-lg btn-block" type="submit">Enter New Agent</button>
   </form>
 
 <?php

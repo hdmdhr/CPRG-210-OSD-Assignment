@@ -1,4 +1,10 @@
-
+<!-- /**************************
+*
+* Author: DongMing Hu
+* Date: Feb. 11, 2019
+* Description: agent entry form is posted to this page, validated here
+*
+**************************/ -->
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -20,19 +26,11 @@
 
 
       foreach ($var as $k => $v) {
-        static $i = 1;
         echo "<tr>
-        <td>no.$i</td>
-        <td>$v</td>
-        <td><a href='$k' target='_blank'>Link</a></td>
+        <td><p>$v</p></td>
+        <td><a href='$k' target='_blank'><p>Go</p></a></td>
         </tr>";
-        $i++;
       }
-
-      // for ($i=1; $i<7; $i++) {
-      //   $href = "dummy/page$i.php";
-      //   echo "<tr><td>cell no$i</td><td><a href=\"$href\" target=\"_blank\">to page$i</a></td></tr>";
-      // }
 
       echo "</table>";
 

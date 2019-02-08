@@ -1,4 +1,12 @@
 <?php
+/**************************
+*
+* Author: DongMing Hu
+* Date: Feb. 11, 2019
+* Description: need to login to enter new agent
+*
+**************************/
+
 if(session_id() == '' || !isset($_SESSION)) {
     session_start();
 }
@@ -14,7 +22,6 @@ if(session_id() == '' || !isset($_SESSION)) {
     list($userId,$password) = explode(",",trim($line));
     $userPinArray += [$userId => $password];  // array is (userId => pin), use to validate login
   }
-  print_r($userPinArray);
 
   if ($_POST) {
     print_r($_POST);
@@ -30,9 +37,9 @@ if(session_id() == '' || !isset($_SESSION)) {
         // pin match, save user-id into session, head to agent entry page
         $_SESSION['user-id'] = $_POST['UserId'];
         header("Location: http://localhost/CPRG-210-OSD-Assignment/new-agent.php");
-      } else { echo "<h2 class='alert alert-danger' role='alert'>Password or User ID do NOT match.</h2>"; }
-    } else { echo "<h2 class='alert alert-danger' role='alert'>User ID or Password do NOT match.</h2>"; }
-  } else { echo "No post received."; }
+      } else { $errorMsg = "<h4 class='alert alert-danger' role='alert'>Password or User ID do NOT match.</h4>"; }
+    } else { $errorMsg = "<h4 class='alert alert-danger' role='alert'>User ID or Password do NOT match.</h4>"; }
+  }
 
  ?>
 
@@ -57,14 +64,23 @@ if(session_id() == '' || !isset($_SESSION)) {
   <?php include_once('php/header.php') ?>
 
   <form class="form-signin mt-5" method="post" action="#">
+    <?php
+      if (isset($errorMsg)) {
+        echo $errorMsg;
+      }
+     ?>
     <a href="index.php" target="_blank">
       <img class="mb-2" src="img/balloon.png" alt="logo" width="72" height="72">
     </a>
     <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
-    <label for="user-id">User ID</label>
-    <input type="text" id="user-id" class="form-control" name="UserId" placeholder="Email address" required autofocus>
-    <label for="inputPassword">Password</label>
-    <input type="password" id="inputPassword" class="form-control" name="Password" placeholder="Password" required>
+    <div class="signin-section mb-3">
+      <label for="user-id">User ID</label>
+      <input type="text" id="user-id" class="form-control" name="UserId" placeholder="Your user id or email" required autofocus>
+    </div>
+    <div class="signin-section mb-3">
+      <label for="inputPassword">Password</label>
+      <input type="password" id="inputPassword" class="form-control" name="Password" placeholder="Password" required>
+    </div>
     <div class="checkbox mb-3">
       <label>
         <input type="checkbox" name="rememberMe" value="rememberMe"> Remember me
