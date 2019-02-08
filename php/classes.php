@@ -40,9 +40,9 @@
 
   //---- Test area ----
 
-  $test = new Agent('DongMing','Hu','780616-7477','1@2.com','Boss',2,'ASM');
-  print_r(get_object_vars($test));
-  echo $test;
+  // $test = new Agent('DongMing','Hu','780616-7477','1@2.com','Boss',2,'ASM');
+  // print_r(get_object_vars($test));
+  // echo $test;
 
   // ------------
 

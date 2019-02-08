@@ -170,6 +170,7 @@ form label {
 }
 
 .input-hint-show {
+  font-size: 0.75em;
   display: inline;
   position: absolute;
   top: 0.3em;

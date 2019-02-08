@@ -27,7 +27,7 @@
         }
         // TODO: if logged in, say the name in session['user-id']
         if (isset($_SESSION['user-id'])) {
-          echo "<em>".$_SESSION['user-id']."</em>.<a href='logout.php' ><button class='btn btn-outline-secondary ml-4'>Logout</button></a></h3>";
+          echo "Agent <em>".$_SESSION['user-id']."</em>.<a href='logout.php' ><button class='btn btn-outline-secondary ml-4'>Logout</button></a></h3>";
         } else {
           echo "Dude.<a href='login.php' ><button class='btn btn-outline-primary ml-4'>Login</button></a></h3>";
         }

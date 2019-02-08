@@ -218,7 +218,7 @@
       <div class="form-group">
         <label for="comment">Your Comment</label>
         <textarea class="form-control" id="comment" placeholder="Please leave your comment here."></textarea>
-        <p class="input-hint-hidden">You can ask questions, give your advices, do claims, basically anything you want to say to us.</p>
+        <p class="input-hint-hidden">Ask questions, leave comments, do claims, anything you want to say.</p>
       </div>
       <div class="form-btns">
         <button type="submit" name="submitBtn" class="form-btn btn btn-primary btn-lg">Submit</button>

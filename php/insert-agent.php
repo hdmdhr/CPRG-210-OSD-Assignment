@@ -1,3 +1,31 @@
+<?php
+if (isset($_POST)) {
+    // Validate all fields, if any empty, show error, fill form with old data
+  $errorMsg = '';
+  foreach ($_POST as $inputName => $inputValue) {
+    // 1.if empty, show error msg, 2.if any error, send $_POST back,
+    if (empty($inputValue)) {
+      $errorMsg .= "Need a valid ".$inputName.".<br>";
+    }
+  }
+
+  if ($errorMsg) {
+    session_start();
+    $_SESSION['errorMsg'] = $errorMsg;
+    $_SESSION['invalidated_post'] = $_POST;
+    header("Location: http://localhost/CPRG-210-OSD-Assignment/new-agent.php");
+  }
+
+  // To Delete -----
+  // if (preg_match('/[12]/',$_POST['AgencyId'])) {
+  //   echo "agency id matches.<br>";
+  // } else {
+  //   echo "please enter agency ID.<br>";
+  // }
+
+}
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,35 +42,31 @@
 <body>
 
 <?php
-    // TODO: merge this page into new-agent.php
-  if (isset($_POST)) {
-    // TODO  validate all fields, if fails, show form with old data
-    if (preg_match('/[12]/',$_POST['AgencyId'])) {
-      echo "agency id matches.<br>";
-    } else {
-      echo "please enter agency ID.<br>";
-    }
-    // 1.get database, 2.include insert func, 3.use $_POST create obj, 4.pass obj into insert func, 5.print succeed or fail.
+  include_once('menu.php');
+
+  // if (isset($_POST)) {
+
+    // 1.connect database, 2.include insert func, 3.use $_POST to create obj, 4.pass obj into insert func, 5.print succeed or fail.
 
     $travel_experts = mysqli_connect("localhost", "admin", "P@ssw0rd", "travelexperts");
-    // TODO: check if connected to database, if not, print error msg
+    if (!$travel_experts) {
+      echo "Error number:".mysqli_connect_errno().PHP_EOL;
+      echo "Error message:".mysqli_connect_error().PHP_EOL;
+      exit;
+    }
 
     include_once('function.php');
     include_once('classes.php');
 
-    $postValueArray = array();
-    foreach ($_POST as $k => $v) {
-      $postValueArray[] = $v;
-    }
+    $postValueArray = array_values($_POST);
 
     $agentObj = new Agent(...$postValueArray);
 
+    // ---- New: insert object into database ---
     $tableName = 'agents';
 
-    // ---- New Insert Object Into Database ---
-
     if (insertObjIntoDBTable($agentObj, $travel_experts, $tableName)) {
-      echo "<h2>Agent <em>".$_POST['AgtFirstName']."</em>'s info was successfully inserted into database table <em>$tableName</em>.";
+      echo "<h2>Great! Agent <em>".$_POST['AgtFirstName']."</em>'s info was inserted into table <em>$tableName</em>.";
     } else {
       echo "<h2>Couldn't insert agent information.";
     }
@@ -50,20 +74,22 @@
     echo "<a href='../new-agent.php' ><button class='btn btn-outline-secondary ml-4'>Go Back</button></a></h2>";
 
 
-  /*  ---- Old Insert Array Into Database ----
+  /*  ---- Old: insert array into database ----
 
     if (insertArrayIntoDBTable($_POST, $travel_experts, $tableName)) {
-      echo "<h2>Agent <em>".$_POST['AgtFirstName']."</em>'s info was successfully inserted into database table <em>$tableName</em>.<a href='../new-agent.php' ><button class='btn btn-outline-secondary ml-4'>Go Back</button></a></h2>";
+      echo "<h2>Agent <em>".$_POST['AgtFirstName']."</em>'s info was successfully inserted into database table <em>$tableName</em>.";
 
-      // succeed, apeend message to logs.txt
+      // succeed, apeend a message to logs.txt
       $text = "".$_POST['AgtFirstName']." ".$_POST['AgtLastName']."'s information was added at ".date('l jS \of F Y h:i:s A').".";
       $myfile = file_put_contents('logs.txt', $text.PHP_EOL , FILE_APPEND | LOCK_EX);
     } else {
-      echo "<h2>Couldn't insert agent information.<a href='../new-agent.php' ><button class='btn btn-outline-secondary ml-4'>Go Back</button></a></h2>";
+      echo "<h2>Sorry, couldn't insert agent information.";
     }
+      // Create a button to go back
+    <a href='../new-agent.php' ><button class='btn btn-outline-secondary ml-4'>Go Back</button></a></h2>
 */
 
-  }
+  // }
 
  ?>
 

@@ -9,12 +9,12 @@ if(session_id() == '' || !isset($_SESSION)) {
 
   // --- Reading users-info.txt and convert to hashtable ---
   // TODO: read from database agent table instead
-  $array = array();
-  foreach (file('users-info.txt') as $line) {  // file() generate a num array
+  $userPinArray = array();
+  foreach (file('users-info.txt') as $line) {  // file() return a num array
     list($userId,$password) = explode(",",trim($line));
-    $array += [$userId => $password];  // array is (userId => pin), use to validate login
+    $userPinArray += [$userId => $password];  // array is (userId => pin), use to validate login
   }
-  print_r($array);
+  print_r($userPinArray);
 
   if ($_POST) {
     print_r($_POST);
@@ -24,10 +24,10 @@ if(session_id() == '' || !isset($_SESSION)) {
       echo "<h2>You've reached the maximum try times, try 5 hours later.</h2>";
     }
 
-    $ID = $_POST['UserId'];
-    if (array_key_exists($ID,$array)) {  // user-id match
-      if ($_POST['Password'] === $array[$ID]) {  // pin match
-        // save user-id to session, head to agent entry page
+    $userId = $_POST['UserId'];
+    if (array_key_exists($userId,$userPinArray)) {  // user-id match, check pin
+      if ($_POST['Password'] === $userPinArray[$userId]) {
+        // pin match, save user-id into session, head to agent entry page
         $_SESSION['user-id'] = $_POST['UserId'];
         header("Location: http://localhost/CPRG-210-OSD-Assignment/new-agent.php");
       } else { echo "<h2 class='alert alert-danger' role='alert'>Password or User ID do NOT match.</h2>"; }
@@ -61,9 +61,9 @@ if(session_id() == '' || !isset($_SESSION)) {
       <img class="mb-2" src="img/balloon.png" alt="logo" width="72" height="72">
     </a>
     <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
-    <label for="user-id" class="sr-only">User ID</label>
+    <label for="user-id">User ID</label>
     <input type="text" id="user-id" class="form-control" name="UserId" placeholder="Email address" required autofocus>
-    <label for="inputPassword" class="sr-only">Password</label>
+    <label for="inputPassword">Password</label>
     <input type="password" id="inputPassword" class="form-control" name="Password" placeholder="Password" required>
     <div class="checkbox mb-3">
       <label>

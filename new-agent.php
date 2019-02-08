@@ -15,8 +15,9 @@ if(session_id() == '' || !isset($_SESSION)) {
   if (!isset($_SESSION['user-id'])) {
     header("Location: http://localhost/CPRG-210-OSD-Assignment/login.php");
   } else {
-    echo "<h2>Good to see you, Dear Agent <em>".$_SESSION['user-id']."</em></h2>";
+    // echo "<h2>Good to see you, Dear Agent <em>".$_SESSION['user-id']."</em></h2>";
   }
+
 ?>
 
 <!DOCTYPE html>
@@ -36,6 +37,17 @@ if(session_id() == '' || !isset($_SESSION)) {
 
   <?php
   include_once('php/header.php');
+
+  $oldData = array();
+  if ($_SESSION['invalidated_post'] && $_SESSION['errorMsg']) {
+    // TODO: show error message, put invalidated data back to table
+    echo "<div class='alert alert-danger'><h4>".$_SESSION['errorMsg']."</h4></div>";
+    print_r($_SESSION['invalidated_post']);
+    $oldData = $_SESSION['invalidated_post'];
+    // unset($_SESSION['invalidated_post']);
+    // unset($_SESSION['errorMsg']);
+  }
+
  ?>
 
   <h2>Create a New Agent</h2>
@@ -43,14 +55,14 @@ if(session_id() == '' || !isset($_SESSION)) {
     <div class="row">
       <div class="col-md-6 mb-3">
         <label for="firstName">First name</label>
-        <input type="text" class="form-control" id="firstName" name="AgtFirstName" placeholder="First Name" value="" required>
+        <input type="text" class="form-control" id="firstName" name="AgtFirstName" placeholder="First Name" value="<?php echo $oldData['AgtFirstName']; ?>" autofocus required>
         <div class="invalid-feedback">
           Valid first name is required.
         </div>
       </div>
       <div class="col-md-6 mb-3">
         <label for="lastName">Last name</label>
-        <input type="text" class="form-control" id="lastName" name="AgtLastName" placeholder="Last Name" value="" required>
+        <input type="text" class="form-control" id="lastName" name="AgtLastName" placeholder="Last Name" value="<?php echo $oldData['AgtLastName']; ?>" required>
         <div class="invalid-feedback">
           Valid last name is required.
         </div>
@@ -59,7 +71,7 @@ if(session_id() == '' || !isset($_SESSION)) {
 
     <div class="mb-3">
       <label for="phone">Phone</label>
-      <input type="text" class="form-control" id="phone" name="AgtBusPhone" placeholder="(123)456-7890" pattern="\([0-9]{3}\)[0-9]{3}-[0-9]{4}">
+      <input type="text" class="form-control" id="phone" name="AgtBusPhone" placeholder="(123)456-7890" pattern="\([0-9]{3}\)[0-9]{3}-[0-9]{4}" value="<?php echo $oldData['AgtBusPhone']; ?>">
       <div class="invalid-feedback">
         Please enter a valid phone number.
       </div>
@@ -67,7 +79,7 @@ if(session_id() == '' || !isset($_SESSION)) {
 
     <div class="mb-3">
       <label for="email">Email <span class="text-muted"></span></label>
-      <input type="email" class="form-control" id="email" name="AgtEmail" placeholder="you@example.com" required>
+      <input type="email" class="form-control" id="email" name="AgtEmail" placeholder="you@example.com" value="<?php echo $oldData['AgtEmail']; ?>" required>
       <div class="invalid-feedback">
         Please enter a valid email address.
       </div>
@@ -102,5 +114,9 @@ if(session_id() == '' || !isset($_SESSION)) {
 <?php
   include_once('php/footer.php');
  ?>
+
+<script type="text/javascript">
+
+</script>
 
 </body>
