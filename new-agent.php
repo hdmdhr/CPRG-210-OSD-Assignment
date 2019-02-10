@@ -36,9 +36,9 @@ if (!isset($_SESSION['user-id'])) {
   <?php
   include_once('php/header.php');
 
+  // check error message, save invalidated data
   $oldData = array();
   if (isset($_SESSION['invalidated_post'])) {
-    // save error message, save invalidated data
     $errorMsg = "<h4 class='alert alert-danger text-center'>".$_SESSION['errorMsg']."</h4>";
     $oldData = $_SESSION['invalidated_post'];
     unset($_SESSION['invalidated_post']);
@@ -49,14 +49,15 @@ if (!isset($_SESSION['user-id'])) {
 
   <form class="needs-validation" method="post" action="insert-agent.php">
     <?php if (isset($errorMsg)) {
-        echo "<h3 class='alert alert-danger text-center'><em>Could not insert agent.</em></h3>";
+        echo "<h3 class='alert alert-danger text-center'>Could <em>not</em> insert agent.</h3>";
         echo $errorMsg;
       } ?>
+
     <h2>Enter a New Agent</h2>
     <div class="row">
       <div class="col-md-6 mb-3">
         <label for="firstName">First name</label>
-        <!-- if have value from last sumit, show it, otherwise, no value -->
+        <!-- if have old value from last submit, show it, otherwise, no value -->
         <input type="text" class="form-control" id="firstName" name="AgtFirstName" placeholder="First Name" value="<?php if ($oldData):?><?php echo $oldData['AgtFirstName']; endif ?>" autofocus required>
         <div class="invalid-feedback">
           Valid first name is required.

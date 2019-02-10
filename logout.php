@@ -3,7 +3,7 @@
 *
 * Author: DongMing Hu
 * Date: Feb. 11, 2019
-* Description: a page only for logout
+* Description: this page is only used for logout
 *
 **************************/
   session_start();

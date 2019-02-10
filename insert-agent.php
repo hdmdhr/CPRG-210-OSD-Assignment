@@ -3,7 +3,7 @@
 *
 * Author: DongMing Hu
 * Date: Feb. 11, 2019
-* Description: agent entry form is posted to this page, validated here
+* Description: agent entry form is posted to this page, and validated here
 *
 **************************/
 

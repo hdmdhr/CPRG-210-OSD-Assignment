@@ -1,4 +1,11 @@
-<article>
+<!-- **************************
+*
+* Author: DongMing Hu
+* Date: Feb. 11, 2019
+* Description: a reusable register form
+*
+************************** -->
+
   <form action="bouncer.php" name="registerForm">
     <div class="form-row">
       <div class="form-group col-md-6">
@@ -100,4 +107,3 @@
       <button type="reset" name="resetBtn" class="form-btn btn btn-primary btn-lg">Reset</button>
     </div>
   </form>
-</article>

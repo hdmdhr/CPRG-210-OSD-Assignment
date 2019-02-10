@@ -3,7 +3,7 @@
 *
 * Author: DongMing Hu
 * Date: Feb. 11, 2019
-* Description: just two saved arrays for future use
+* Description: two saved arrays for future use
 *
 **************************/
 

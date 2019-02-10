@@ -1,10 +1,10 @@
-<!-- /**************************
+<!-- **************************
 *
 * Author: DongMing Hu
 * Date: Feb. 11, 2019
-* Description: agent entry form is posted to this page, validated here
+* Description: page with links to external websites.
 *
-**************************/ -->
+************************** -->
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -19,11 +19,9 @@
 
     <?php
       require_once('php/header.php');
-
       require_once('php/var.php');
 
       echo "<table class='table'>";
-
 
       foreach ($var as $k => $v) {
         echo "<tr>
@@ -35,7 +33,6 @@
       echo "</table>";
 
       include_once('php/footer.php');
-
      ?>
    </body>
 
