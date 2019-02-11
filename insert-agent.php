@@ -3,6 +3,7 @@
 *
 * Author: DongMing Hu
 * Date: Feb. 11, 2019
+* Course: CPRG 210 PHP
 * Description: agent entry form is posted to this page, and validated here
 *
 **************************/
@@ -62,7 +63,6 @@ if (isset($_POST)) {
 
     // ---- New: insert object into database ---
     $tableName = 'agents';
-
     if (insertObjIntoDBTable($agentObj, $travel_experts, $tableName)) {
       echo "<h2>Great! Agent <em>".$_POST['AgtFirstName']."</em>'s info was inserted into table <em>$tableName</em>.";
     } else {

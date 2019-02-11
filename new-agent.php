@@ -3,6 +3,7 @@
 *
 * Author: DongMing Hu
 * Date: Feb. 11, 2019
+* Course: CPRG 210 PHP
 * Description: agent entry page whcih requires login to view
 *
 **************************/
@@ -117,9 +118,5 @@ if (!isset($_SESSION['user-id'])) {
 <?php
   include_once('php/footer.php');
  ?>
-
-<script type="text/javascript">
-
-</script>
 
 </body>

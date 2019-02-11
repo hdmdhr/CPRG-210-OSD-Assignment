@@ -2,6 +2,7 @@
 *
 * Author: DongMing Hu
 * Date: Feb. 11, 2019
+* Course: CPRG 210 PHP
 * Description: register page for customers
 *
 ************************** -->

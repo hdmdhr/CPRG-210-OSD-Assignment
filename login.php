@@ -3,6 +3,7 @@
 *
 * Author: DongMing Hu
 * Date: Feb. 11, 2019
+* Course: CPRG 210 PHP
 * Description: login page, before log user in, check login try times, check if user id and password match
 *
 **************************/

@@ -3,6 +3,7 @@
 *
 * Author: DongMing Hu
 * Date: Feb. 11, 2019
+* Course: CPRG 210 PHP
 * Description: two saved arrays for future use
 *
 **************************/

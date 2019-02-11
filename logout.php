@@ -3,6 +3,7 @@
 *
 * Author: DongMing Hu
 * Date: Feb. 11, 2019
+* Course: CPRG 210 PHP
 * Description: this page is only used for logout
 *
 **************************/

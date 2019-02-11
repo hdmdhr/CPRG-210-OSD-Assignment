@@ -2,7 +2,8 @@
 *
 * Author: DongMing Hu
 * Date: Feb. 11, 2019
-* Description: just a contact page
+* Course: CPRG 210 PHP
+* Description: the a contact page includes two tables
 *
 **************************/ -->
 
